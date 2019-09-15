@@ -9,8 +9,14 @@ import UIKit
 
 extension UIViewController {
     
-    public func alert(title: String?, message: String, style: UIAlertController.Style = .alert) -> AlertHandler {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+    public func actionSheet(title: String?, message: String?) -> AlertHandler {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let handler = AlertHandler(alert: alert, from: self)
+        return handler
+    }
+    
+    public func alert(title: String?, message: String?) -> AlertHandler {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let handler = AlertHandler(alert: alert, from: self)
         return handler
     }
@@ -24,11 +30,11 @@ extension UIViewController {
             self.vc = vc
         }
         
-        public func addAction(_ title: String?, style: UIAlertAction.Style = .default, action: (() -> ())?) -> AlertHandler {
+        public func addButton(_ title: String?, style: UIAlertAction.Style = .default, action: (() -> ())?) -> AlertHandler {
             let alertAction = UIAlertAction(title: title, style: style) { _ in
                 action?()
             }
-            alert.addAction(alertAction)
+            alert.addButton(alertAction)
             return self
         }
         

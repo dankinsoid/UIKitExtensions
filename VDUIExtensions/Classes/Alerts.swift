@@ -34,7 +34,7 @@ extension UIViewController {
             let alertAction = UIAlertAction(title: title, style: style) { _ in
                 action?()
             }
-            alert.addButton(alertAction)
+            alert.addAction(alertAction)
             return self
         }
         

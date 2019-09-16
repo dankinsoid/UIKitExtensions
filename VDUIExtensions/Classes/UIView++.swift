@@ -37,4 +37,13 @@ extension UIView {
             NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: sv, attribute: .bottom, multiplier: 1, constant: b).isActive = true
         }
     }
+    
+    public func addSubviews(_ views: [UIView]) {
+        views.forEach(addSubview)
+    }
+    
+    public func addSubviews(_ views: UIView...) {
+        addSubviews(views)
+    }
+    
 }

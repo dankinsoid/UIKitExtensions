@@ -6,10 +6,10 @@
 //  Copyright © 2018 Данил Войдилов. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol AnimatedViewProtocol where Self: UIView {
-    var tintColor: UIColor! {get set}
+    var tintColor: UIColor! { get set }
     func drawAnimation(_: (() -> ())?) -> ()
 }
 

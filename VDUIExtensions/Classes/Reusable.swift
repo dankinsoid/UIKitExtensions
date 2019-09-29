@@ -28,9 +28,9 @@ extension UITableView {
     }
     
     fileprivate func _findRegistered(cellType: UITableViewCell.Type) -> String? {
-        let registeredCellClasses = (value(forKey: "_cellClassDict") as? [String: AnyClass]) ?? [:]
+        let registeredCellClasses = (value(forKey: "_cellClassDict") as? [String: Any]) ?? [:]
         for (key, value) in registeredCellClasses {
-            if value == cellType {
+            if value as? AnyClass == cellType {
                 return key
             }
         }
@@ -44,9 +44,9 @@ extension UITableView {
     }
     
     fileprivate func _findRegistered(headerType: UITableViewHeaderFooterView.Type) -> String? {
-        let registeredCellClasses = (value(forKey: "_headerFooterClassDict") as? [String: AnyClass]) ?? [:]
+        let registeredCellClasses = (value(forKey: "_headerFooterClassDict") as? [String: Any]) ?? [:]
         for (key, value) in registeredCellClasses {
-            if value == headerType {
+            if value as? AnyClass == headerType {
                 return key
             }
         }
@@ -139,9 +139,9 @@ extension UICollectionView {
     }
     
     fileprivate func _findRegistered(cellType: UICollectionViewCell.Type) -> String? {
-        let registeredCellClasses = (value(forKey: "_cellClassDict") as? [String: AnyClass]) ?? [:]
+        let registeredCellClasses = (value(forKey: "_cellClassDict") as? [String: Any]) ?? [:]
         for (key, value) in registeredCellClasses {
-            if value == cellType {
+            if value as? AnyClass == cellType {
                 return key
             }
         }
@@ -156,9 +156,9 @@ extension UICollectionView {
     
     fileprivate func _findRegistered(viewType: UICollectionReusableView.Type) -> (id: String, kind: String)? {
         let kinds = (value(forKey: "_supplementaryViewRegisteredKinds") as? Set<String>) ?? []
-        let registeredCellClasses = (value(forKey: "_supplementaryViewClassDict") as? [String: AnyClass]) ?? [:]
+        let registeredCellClasses = (value(forKey: "_supplementaryViewClassDict") as? [String: Any]) ?? [:]
         for (key, value) in registeredCellClasses {
-            if value == viewType {
+            if value as? AnyClass == viewType {
                 var array = key.components(separatedBy: "/")
                 guard array.count > 1 else { continue }
                 let kind = array.removeFirst()
